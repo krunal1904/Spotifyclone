@@ -1,0 +1,53 @@
+
+.form{
+
+    position: relative;
+}
+
+.form .fa-search{
+
+    position: absolute;
+    top:15px;
+    left: 15px;
+    color: #9ca3af;
+
+}
+
+.form span{
+
+        position: absolute;
+    right: 17px;
+    top: 13px;
+    padding: 2px;
+    border-left: 1px solid #d1d5db;
+
+}
+
+.left-pan{
+    padding-left: 0px;
+}
+
+.left-pan i{
+   
+   padding-left: 5px;
+}
+
+.form-input{
+
+    height: 45px;
+    text-indent: 33px;
+    border-radius: 10px;
+    width: 500px;
+}
+
+.form-input:focus{
+
+    box-shadow: none;
+    border:none;
+}
+
+.App__section-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }

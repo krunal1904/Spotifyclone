@@ -1,0 +1,316 @@
+{% extends 'base.html' %}
+
+{% block title %}{% endblock title %}
+
+{% block body %}
+
+<head>
+  <link rel="stylesheet" href="path/to/font-awesome/css/all.min.css">
+
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+  
+
+
+
+  <style>
+
+    .spotify-playlists {
+      padding: 10px 0px;
+    }
+
+    .footer-card {
+      background-color: rgb(21, 21, 21);
+      margin: 20px
+    }
+
+    .footer {
+      padding-left: 0px;
+      height: 80px;
+    }
+
+    .footer li {
+      margin: 10px 10px;
+      float: left;
+      font-size: 13px;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .footer li a {
+      color: rgb(147, 144, 144);
+    }
+
+    .footer li a:hover {
+      color: white;
+      text-decoration: none;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: auto auto auto auto auto;
+      background-color: rgb(21, 21, 21);
+      color: aliceblue;
+      font-size: 20px;
+      width: 100%;
+      padding: 20px;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .first {
+      color: rgb(182, 177, 177);
+      font-size: 16px;
+    }
+
+    ul li a {
+      color: rgb(147, 144, 144);
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    ul li a:hover {
+      color: white;
+      text-decoration: none;
+    }
+
+    .item5 img {
+      width: 40px;
+    }
+  
+    .artist_image{
+      width: 155px;
+      height: 155px;
+      
+}
+    .artist{
+      min-width: 150px;
+      width: 80px;
+      height: 250px;
+      padding: 15px;
+      background-color: #181818;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all ease 0.4s;
+    }
+    .spotify-playlists .list .artist:hover {
+    background-color: #252525;
+  }
+  
+  .spotify-playlists .list .artist .play {
+    position: relative;
+  }
+  .spotify-playlists .list .artist .play .fa {
+    position: absolute;
+    right: 10px;
+    top: -60px;
+    padding: 18px;
+    background-color: #1db954;
+    border-radius: 100%;
+    opacity: 0;
+    transition: all ease 0.4s;
+  }
+  .spotify-playlists .list .artist:hover .play .fa {
+    opacity: 1;
+    transform: translateY(-20px);
+  }
+  .spotify-playlists .list .artist h4 {
+    color: #ffffff;
+    font-size: 16px;
+    margin-bottom: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-top: 15px;
+    text-overflow: ellipsis;
+  }
+  .spotify-playlists .list .artist p {
+    color: #989898;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+  }
+
+    .artist img{
+      border-radius: 50%;
+      border: 1px solid rgb(142, 242, 133);
+    }
+
+
+    .album{
+      min-width: 150px;
+      width: 80px;
+      height: 250px;
+      padding: 15px;
+      background-color: #181818;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all ease 0.4s;
+    }
+    .spotify-playlists .list .album:hover {
+    background-color: #252525;
+  }
+  
+  .spotify-playlists .list .album .play {
+    position: relative;
+  }
+  .spotify-playlists .list .album .play .fa {
+    position: absolute;
+    right: 10px;
+    top: -60px;
+    padding: 18px;
+    background-color: #1db954;
+    border-radius: 100%;
+    opacity: 0;
+    transition: all ease 0.4s;
+  }
+  .spotify-playlists .list .album:hover .play .fa {
+    opacity: 1;
+    transform: translateY(-20px);
+  }
+  .spotify-playlists .list .album h4 {
+    color: #ffffff;
+    font-size: 16px;
+    margin-bottom: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-top: 15px;
+    text-overflow: ellipsis;
+  }
+  .spotify-playlists .list .album p {
+    color: #989898;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+  }
+
+  .album img{
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+
+    
+    .item5 ul li {
+      display: inline-block;
+      margin: 2px;
+    }
+
+    @media only screen and (max-width: 700px) {
+      .item5 img {
+        width: 30px;
+      }
+
+      .first {
+        font-size: 10px;
+      }
+    }
+  </style>
+</head>
+
+<div class="spotify-playlists">
+  <h2>Spotify Playlists</h2>
+  <div class="list">
+    {% for i in lst %}
+    <div class="item">
+      <a href="{{i.link}}" style="text-decoration:none">
+        <img src={{i.image}} />
+        <div class="play">
+          <span class="fa fa-play"></span>
+        </div>
+        <h4>{{i.name}}</h4>
+        <p>{{i.disc}}</p>
+      </a>
+    </div>
+    {% endfor %} 
+</div>
+
+<div class="spotify-playlist" style="--column-width: 212px; --column-count: 6; --grid-gap: 24px; --min-container-width: 448px;">
+  <h2 style="padding : 10px">Artist</h2>
+  <div class="list">
+    {% for i in artist_list %}
+    <div class="artist">
+      <a href="{{i.link}}" style="text-decoration:none">
+        <img src={{i.image}} class="artist_image" />
+        <div class="play">
+          <span class="fa fa-play"></span>
+        </div>
+        <h4>{{i.name}}</h4>
+        <p>{{i.type}}</p>
+      </a>
+    </div>
+    {% endfor %} 
+</div>
+
+<div class="spotify-playlists">
+  <h2>Albums</h2>
+  <div class="list">
+    {% for i in album_list %}
+    <div class="album">
+      <a href="{{i.link}}" style="text-decoration:none">
+        <img src={{i.image}} />
+        <div class="play">
+          <span class="fa fa-play"></span>
+        </div>
+        <h4>{{i.album_name}}</h4>
+        <p>{{i.year}} • {{i.album_artist}}</p>
+      </a>
+    </div>
+    {% endfor %} 
+</div>
+
+<div class="footer-card" style="display:flexbox;">
+  <div class="container">
+    <div class="item2">
+      <ul>
+        <li class="first"> Company</li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">For the record</a></li>
+      </ul>
+    </div>
+    <div class="item3">
+      <ul>
+        <li class="first"> Communities</li>
+        <li><a href="#">For Artists</a></li>
+        <li><a href="#">Developers</a></li>
+        <li><a href="#">Advertising </a></li>
+        <li><a href="#">Investors</a></li>
+        <li><a href="#">Vendors</a></li>
+      </ul>
+    </div>
+    <div class="item4">
+      <ul>
+        <li class="first"> Useful Links</li>
+        <li><a href="#">Support</a></li>
+        <li><a href="#">Web Player</a></li>
+        <li><a href="#">Free Mobile App</a></li>
+        <li><a href="#">Car Thing</a></li>
+      </ul>
+    </div>
+    <div class="item5">
+      <ul>
+        <li> <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png"
+            alt="Logo" </li>
+        <li> <img src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c53e.png" </li>
+        <li> <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png"
+            </li>
+      </ul>
+    </div>
+  </div>
+  <hr style="background-color: rgb(5, 4, 4); width: 95%; ">
+  <ul class="footer" style="display: flex; list-style: none; margin: 5px 25px; color: white;">
+    <li><a href="#">Legal</a></li>
+    <li><a href="#">Privacy Center</a></li>
+    <li><a href="#">Privacy Policy</a></li>
+    <li><a href="#">Cookies</a></li>
+    <li><a href="#">About Ads</a></li>
+    <li><a href="#">Accessibility</a></li>
+  </ul>
+</div>
+
+{% block index %} {% endblock index %}
+
+{% endblock body %}

@@ -1,0 +1,720 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% comment %}
+  <link rel="stylesheet" href="{% static 'signup.css' %}"> {% endcomment %}
+  <title>Sign up</title>
+  <style>
+    body,
+    input,
+    textarea,
+    button {
+      font-family: var(--font-family, CircularSp, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, var(--fallback-fonts, sans-serif)), Helvetica, Arial, sans-serif;
+    }
+
+    .header_logo {
+      text-align: center;
+      padding: 40px 0px 32px
+    }
+
+    .image {
+      text-align: center;
+    }
+
+    .signup {
+      max-width: 550px;
+      margin: 0px auto;
+      padding-bottom: 130px;
+      box-sizing: border-box
+    }
+
+    .element {
+      margin-top: 40px;
+      text-align: center;
+      line-height: 36px;
+      letter-spacing: -0.09em;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      margin-block: 15px;
+      font-size: 2rem;
+      font-family: var(--font-family, CircularSpTitle, CircularSpTitle-Tall, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, var(--fallback-fonts, sans-serif));
+      color: inherit;
+      font-weight: 700;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .fbsignuplinkbtn {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 22px;
+
+    }
+
+    .fblink {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: var(--font-family, CircularSp, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, var(--fallback-fonts, sans-serif));
+      background-color: transparent;
+      border: 0px;
+      border-radius: 500px;
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      text-transform: none;
+      touch-action: manipulation;
+      transition-duration: 33ms;
+      transition-property: background-color, border-color, color, box-shadow, filter, transform;
+      user-select: none;
+      vertical-align: middle;
+      transform: translate3d(0px, 0px, 0px);
+      padding: 0px;
+      min-inline-size: 0px;
+      align-self: center;
+    }
+
+    .fbsignupbtn {
+      width: 394px;
+      font-size: 16px;
+      display: flex;
+      -webkit-box-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+      padding: 6px 24px;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      position: relative;
+      background-color: var(--background-base, #1ed760);
+      color: var(--text-base, #000000);
+      display: flex;
+      border-radius: 500px;
+      font-size: inherit;
+      min-block-size: 48px;
+      -webkit-box-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+      padding-block: 8px;
+      padding-inline: 32px;
+      --background-base: #405A93 !important;
+      --background-highlight: #384F81 !important;
+      --background-press: #31446F !important;
+      --background-elevated-base: #405A93 !important;
+      --background-elevated-highlight: #384F81 !important;
+      --background-elevated-press: #31446F !important;
+      --background-tinted-base: #405A93 !important;
+      --background-tinted-highlight: #384F81 !important;
+      --background-tinted-press: #31446F !important;
+      --background-unsafe-for-small-text-base: #405A93 !important;
+      --background-unsafe-for-small-text-highlight: #384F81 !important;
+      --background-unsafe-for-small-text-press: #31446F !important;
+      --text-base: #ffffff !important;
+      --text-subdued: #FFFFFF !important;
+      --text-bright-accent: #FFFFFF !important;
+      --text-negative: #FFFFFF !important;
+      --text-warning: #FFFFFF !important;
+      --text-positive: #FFFFFF !important;
+      --text-announcement: #FFFFFF !important;
+      --essential-base: #FFFFFF !important;
+      --essential-subdued: #FFFFFF !important;
+      --essential-bright-accent: #FFFFFF !important;
+      --essential-negative: #FFFFFF !important;
+      --essential-warning: #FFFFFF !important;
+      --essential-positive: #FFFFFF !important;
+      --essential-announcement: #FFFFFF !important;
+      --decorative-base: #FFFFFF !important;
+      --decorative-subdued: #FFFFFF !important;
+    }
+
+    .fblogo {
+      padding-right: 16px;
+      padding-top: 5px;
+    }
+
+    .gglsignuplinkbtn {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 22px
+    }
+
+    .gglsignupbtn {
+      width: 394px;
+      font-size: 16px;
+      border: 2px solid rgb(83, 83, 83);
+      display: flex;
+      -webkit-box-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+      padding: 6px 24px;
+
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      position: relative;
+      background-color: var(--background-base, #1ed760);
+      color: var(--text-base, #000000);
+      display: flex;
+      border-radius: 500px;
+      font-size: inherit;
+      min-block-size: 48px;
+      -webkit-box-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+      padding-block: 8px;
+      padding-inline: 32px;
+      --background-base: #FFFFFF !important;
+      --background-highlight: #FFFFFF !important;
+      --background-press: #FFFFFF !important;
+      --background-elevated-base: #FFFFFF !important;
+      --background-elevated-highlight: #FFFFFF !important;
+      --background-elevated-press: #FFFFFF !important;
+      --background-tinted-base: #FFFFFF !important;
+      --background-tinted-highlight: #FFFFFF !important;
+      --background-tinted-press: #FFFFFF !important;
+      --background-unsafe-for-small-text-base: #FFFFFF !important;
+      --background-unsafe-for-small-text-highlight: #FFFFFF !important;
+      --background-unsafe-for-small-text-press: #FFFFFF !important;
+      --text-base: #535353 !important;
+      --text-subdued: #535353 !important;
+      --text-bright-accent: #535353 !important;
+      --text-negative: #535353 !important;
+      --text-warning: #535353 !important;
+      --text-positive: #535353 !important;
+      --text-announcement: #535353 !important;
+      --essential-base: #535353 !important;
+      --essential-subdued: #535353 !important;
+      --essential-bright-accent: #535353 !important;
+      --essential-negative: #535353 !important;
+      --essential-warning: #535353 !important;
+      --essential-positive: #535353 !important;
+      --essential-announcement: #535353 !important;
+      --decorative-base: #535353 !important;
+      --decorative-subdued: #535353 !important;
+    }
+
+
+    .gglink {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: var(--font-family, CircularSp, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, var(--fallback-fonts, sans-serif));
+      background-color: transparent;
+      border: 0px;
+      border-radius: 500px;
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      text-transform: none;
+      touch-action: manipulation;
+      transition-duration: 33ms;
+      transition-property: background-color, border-color, color, box-shadow, filter, transform;
+      user-select: none;
+      vertical-align: middle;
+      transform: translate3d(0px, 0px, 0px);
+      padding: 0px;
+      min-inline-size: 0px;
+      align-self: center;
+    }
+
+
+    .ggllogo {
+      padding-right: 16px;
+      padding-top: 5px;
+
+    }
+
+    .line {
+      display: table;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 2px;
+      margin: 0px auto 1em;
+      color: rgb(127, 127, 127);
+      position: relative;
+      text-align: center;
+      width: 85%;
+    }
+
+    .form {
+        display: block;
+        margin-top: 0em;
+    }
+
+    a:-webkit-any-link {
+        color: -webkit-link;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    .bNNEyC {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+        padding-block-end: var(--spacer-1,24px);
+    }
+    .cjzwMh {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+        padding-block-end: var(--spacer-1,24px);
+        min-inline-size: 0px;
+        padding-inline: 0px;
+        padding-block-start: 0px;
+        margin: 0px;
+        border: 0px;
+    }
+    .bTvwxQ {
+        text-align: center;
+    }
+    .bSnCsh {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+        font-size: 0.875rem;
+        font-weight: 700;
+        font-family: var(--font-family,CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,var(--fallback-fonts,sans-serif));
+        -webkit-box-align: center;
+        align-items: center;
+        display: flex;
+        inline-size: 100%;
+        padding-block-end: var(--spacer--2,8px);
+    }
+
+    .eiAzGk {
+        appearance: none;
+        background-image: none;
+        border: 0px;
+        display: block;
+        font-size: 1rem;
+        font-weight: 400;
+        font-family: var(--font-family,CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,var(--fallback-fonts,sans-serif));
+        transition: box-shadow 0.1s ease-in-out 0s, color 0.1s ease-in-out 0s;
+        inline-size: 100%;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+        margin-block: 0px;
+        border-radius: var(--border-radius-md,4px);
+        padding-inline: 14px;
+        padding-block-start: var(--spacer--2,8px);
+        padding-block-end: var(--spacer--2,8px);
+        min-block-size: var(--control-size-md,48px);
+        background-color: var(--background-base,#ffffff);
+        box-shadow: inset 0 0 0 1px var(--essential-subdued,#878787);
+        color: var(--text-base,#000000);
+    }
+    .hIjMRJ[href], .hIjMRJ:hover:not([disabled]) {
+        text-decoration: underline;
+    }
+    .ezvJUn {
+        color: var(--text-base,#000000);
+    }
+    .cCagTa {
+        display: inline-block;
+    }
+    .jMNjnc {
+        font-size: 14px;
+        padding-top: 8px;
+    }
+    .hIjMRJ {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+        color: var(--text-bright-accent,#117a37);
+        -webkit-box-align: center;
+        align-items: center;
+        text-decoration: none;
+    }
+    .kdFSxQ {
+        border: 0px;
+        clip: rect(0px, 0px, 0px, 0px);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0px;
+        position: absolute;
+        width: 1px;
+    }
+    .hfclbh {
+        min-inline-size: 0px;
+        overflow-wrap: break-word;
+    }
+    .cFxIb {
+        display: flex;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+    }
+    .gloLvL {
+        width: 25%;
+    }
+    .kCdKKA {
+        padding-bottom: 0px;
+    }
+    .bwgTGW {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+        font-size: 0.875rem;
+        font-weight: 700;
+        font-family: var(--font-family,CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,var(--fallback-fonts,sans-serif));
+        -webkit-box-align: center;
+        align-items: center;
+        display: flex;
+        inline-size: 100%;
+        padding-block-end: var(--spacer--2,8px);
+        padding-inline: 0px;
+    }
+    .iNKEny {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .hcKOBC {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-box-align: center;
+        align-items: center;
+        display: flex;
+        padding-block: 4px;
+        position: relative;
+        min-block-size: 32px;
+    }
+    .fcdZfL {
+        display: flex;
+        position: relative;
+        min-inline-size: 0px;
+    }
+    input:not(:checked) + label .dFGMcY.dFGMcY {
+        background-color: var(--background-base,#ffffff);
+        border: 1px solid var(--essential-subdued,#878787);
+    }
+    .dwmyHd {
+        position: relative;
+        top: -2px;
+        color: var(--text-base,#000000);
+        padding-inline-start: var(--spacer--1,12px);
+        padding-inline-end: var(--spacer-1,24px);
+        min-inline-size: 0px;
+        overflow-wrap: break-word;
+    }
+    .eIvwKg {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+        margin-block: 0px;
+        font-size: 0.875rem;
+        font-weight: 400;
+        font-family: var(--font-family,CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,var(--fallback-fonts,sans-serif));
+        color: inherit;
+    }
+    .benotq {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+        background: transparent;
+        border-radius: 50%;
+        display: inline-block;
+        block-size: 16px;
+        user-select: none;
+        inline-size: 16px;
+        flex-shrink: 0;
+        align-self: flex-start;
+        top: 0px;
+        position: relative;
+    }
+    .kdFSxQ {
+        border: 0px;
+        clip: rect(0px, 0px, 0px, 0px);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0px;
+        position: absolute;
+        width: 1px;
+    }
+    .cFtZyo {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-box-align: center;
+        align-items: center;
+        display: flex;
+        padding-block: 4px;
+        position: relative;
+        min-block-size: 32px;
+    }
+    .ffsXBF {
+        display: flex;
+        position: relative;
+        min-inline-size: 0px;
+    }
+    input:not(:checked) + label .jrJQVH.jrJQVH {
+        border: 1px solid var(--essential-subdued,#878787);
+    }
+
+    input + label .Indicator-sc-1airx73-0 {
+        background-color: var(--background-base,#ffffff);
+    }
+
+    input + label .Indicator-sc-1airx73-0 {
+        background-color: var(--background-base,#ffffff);
+    }
+
+    .jrJQVH {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+        background: transparent;
+        border-radius: 3px;
+        display: inline-block;
+        block-size: 16px;
+        user-select: none;
+        inline-size: 16px;
+        flex-shrink: 0;
+        align-self: flex-start;
+        top: 0px;
+        position: relative;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="signup">
+      <div class="header_container">
+        <div class="header_logo">
+          <a href="/home"><img src="/static/spy.png" alt="spotify" height="40px" class="image"></a>
+          <h2 class="element">Sign up for free to start listening.</h2>
+        </div>
+      </div>
+      <div class="fbsignuplinkbtn">
+        <a href="https://www.facebook.com/login.php?skip_api_login=1&api_key=174829003346&kid_directed_site=0&app_id=174829003346&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fv7.0%2Fdialog%2Foauth%3Fclient_id%3D174829003346%26state%3DAQCP24AVeCqT%252ByxP0AhQTfMpglb57R%252BHeNQvD67L%252B9LtKq8bPc03i4Sh5lw6LTvgjErJ6QRUp2EwdODM9wyr7da2Lpjlc8WF9DaqXZsSFIqeIMMAfdEsbtSdifv%252BO0XK2IGTc%252FNS3DM9qhflrZFV%252FQSrNvERZIBMxKE62SXC5u65l3FJp5Gv448AQ1NXC7uvAIhUdwG7qfUiJLc1QZU%252FlSZqVEdVGDhGafb36It4s0cwK%252FXv6xZkQlIpwqppaSI4JCmGBWbXkVhNutkxosyYShxuasCM2sbYLQKTUxB78Mipa%252FXqShga72mdSyzQKIub7ATZMiL1jpR3Yuj3DsqReEvu7xLw1EM02DryTDQ6fzUJeRv0Xz0gQ154mfHcZZIk5wnEHbCM72j9ZEqcZ9BYFMKO0c0%252FPp3M9lIA9DDKKNkV4A%252FCuVwN%252BoxXRo9VSXD2uMo%252B%26redirect_uri%3Dhttps%253A%252F%252Faccounts.spotify.com%252Flogin%252Ffacebook%252Fredirect%252Fsignup%26ret%3Dlogin%26fbapp_pres%3D0%26logger_id%3Dac80770e-9bae-4409-b7f0-038e12648d1f%26tp%3Dunspecified&cancel_url=https%3A%2F%2Faccounts.spotify.com%2Flogin%2Ffacebook%2Fredirect%2Fsignup%3Ferror%3Daccess_denied%26error_code%3D200%26error_description%3DPermissions%2Berror%26error_reason%3Duser_denied%26state%3DAQCP24AVeCqT%252ByxP0AhQTfMpglb57R%252BHeNQvD67L%252B9LtKq8bPc03i4Sh5lw6LTvgjErJ6QRUp2EwdODM9wyr7da2Lpjlc8WF9DaqXZsSFIqeIMMAfdEsbtSdifv%252BO0XK2IGTc%252FNS3DM9qhflrZFV%252FQSrNvERZIBMxKE62SXC5u65l3FJp5Gv448AQ1NXC7uvAIhUdwG7qfUiJLc1QZU%252FlSZqVEdVGDhGafb36It4s0cwK%252FXv6xZkQlIpwqppaSI4JCmGBWbXkVhNutkxosyYShxuasCM2sbYLQKTUxB78Mipa%252FXqShga72mdSyzQKIub7ATZMiL1jpR3Yuj3DsqReEvu7xLw1EM02DryTDQ6fzUJeRv0Xz0gQ154mfHcZZIk5wnEHbCM72j9ZEqcZ9BYFMKO0c0%252FPp3M9lIA9DDKKNkV4A%252FCuVwN%252BoxXRo9VSXD2uMo%252B%23_%3D_&display=page&locale=en_GB&pl_dbl=0"
+          class="fblink">
+          <span class="fbsignupbtn">
+            <div class="fblogo">
+              <svg style="color: rgb(254, 254, 254)" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                <path
+                  d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"
+                  fill="white"></path>
+              </svg>
+            </div>
+            Sign up with Facebook
+          </span>
+        </a>
+      </div>
+
+      <div class="gglsignuplinkbtn">
+        <a href="https://accounts.spotify.com/en/login?method=google&amp;continue=https%3A%2F%2Fopen.spotify.com%2F%3Fflow_id%3D83ea90c2-b6d9-4abb-9b35-8f60d79f8243%253A1685453785&amp;intent=signup&amp;creation_point=https%3A%2F%2Fwww.spotify.com%2Fapi%2Fmasthead%2Fv1%2Fmasthead&amp;flow_id=83ea90c2-b6d9-4abb-9b35-8f60d79f8243%3A1685453785"
+          data-encore-id="buttonPrimary" class="gglink">
+          <span class="gglsignupbtn">
+            <div class="ggllogo">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M21.6 12.2272C21.6 11.5181 21.5364 10.8363 21.4182 10.1818H12V14.0499H17.3818C17.15 15.2999 16.4455 16.359 15.3864 17.0681V19.5772H18.6182C20.5091 17.8363 21.6 15.2727 21.6 12.2272Z"
+                  fill="#4285F4"></path>
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M12 21.9999C14.7 21.9999 16.9636 21.1044 18.6181 19.5772L15.3863 17.0681C14.4909 17.6681 13.3454 18.0226 12 18.0226C9.39542 18.0226 7.19087 16.2635 6.40451 13.8999H3.0636V16.4908C4.70905 19.759 8.09087 21.9999 12 21.9999Z"
+                  fill="#34A853"></path>
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M6.40455 13.9001C6.20455 13.3001 6.09091 12.6592 6.09091 12.0001C6.09091 11.341 6.20455 10.7001 6.40455 10.1001V7.50916H3.06364C2.38636 8.85916 2 10.3864 2 12.0001C2 13.6137 2.38636 15.141 3.06364 16.491L6.40455 13.9001Z"
+                  fill="#FBBC05"></path>
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M12 5.97727C13.4681 5.97727 14.7863 6.48182 15.8227 7.47273L18.6909 4.60455C16.9591 2.99091 14.6954 2 12 2C8.09087 2 4.70905 4.24091 3.0636 7.50909L6.40451 10.1C7.19087 7.73636 9.39542 5.97727 12 5.97727Z"
+                  fill="#EA4335"></path>
+              </svg>
+            </div>
+            Sign up with Google
+          </span>
+        </a>
+
+      </div>
+
+      <span class="line">or</span>
+
+      <form novalidate="" method="POST">
+        <div data-encore-id="formGroup" class="Group-sc-u9bcx5-0 bNNEyC">
+          <div class="LabelGroup-sc-1ibddrg-0 bSnCsh"><label for="email" class="Label-sc-1c0cv3r-0 ezvJUn"><span
+                class="LabelInner-sc-19pye2k-0 cCagTa">What's your email?</span></label></div><input type="email"
+            aria-invalid="false" autocomplete="email" id="email" name="email" placeholder="Enter your email."
+            required="" value="" data-encore-id="formInput" class="Input-sc-1gbx9xe-0 eiAzGk"><a
+            href="https://accounts.spotify.com/en/login?method=phone&amp;continue=https%3A%2F%2Fopen.spotify.com%2F%3Fflow_id%3Db325c2ca-d221-4300-8824-1b27fffff6f6%253A1685460393&amp;intent=signup&amp;creation_point=https%3A%2F%2Fwww.spotify.com%2Fapi%2Fmasthead%2Fv1%2Fmasthead&amp;flow_id=b325c2ca-d221-4300-8824-1b27fffff6f6%3A1685460393"
+            class="Link-sc-k8gsk-0 hIjMRJ PhoneNumLink__StyledLink-vzslqv-0 jMNjnc" data-encore-id="textLink">Use phone
+            number instead.</a>
+        </div>
+        <div data-encore-id="formGroup" class="Group-sc-u9bcx5-0 bNNEyC">
+          <div class="LabelGroup-sc-1ibddrg-0 bSnCsh"><label for="password" class="Label-sc-1c0cv3r-0 ezvJUn"><span
+                class="LabelInner-sc-19pye2k-0 cCagTa">Create a password</span></label></div>
+          <div aria-live="polite" data-testid="password-state-announcement-region" data-encore-id="visuallyHidden"
+            class="VisuallyHidden__VisuallyHiddenElement-sc-17bibe8-0 kdFSxQ">Password is hidden</div>
+          <div data-encore-id="formInputIcon" class="InputContainer-sc-a5ofs0-0 kTGxvH"><input type="password"
+              aria-invalid="false" autocomplete="new-password" id="password" pattern=".{8,}" name="password"
+              placeholder="Create a password." required="" value="" data-encore-id="formInput"
+              class="Input-sc-1gbx9xe-0 eiAzGk">
+            <div class="IconContainer-sc-1oa4n9m-0 ixGTiq"><button aria-label="Show password"
+                data-encore-id="buttonTertiary" class="Button-sc-1dqy6lx-0 lcWnCU"><span aria-hidden="true"
+                  class="IconWrapper__Wrapper-sc-16usrgb-0 jyHIqB"><svg role="img" height="24" width="24"
+                    aria-hidden="true" viewBox="0 0 24 24" data-encore-id="icon" class="Svg-sc-ytk21e-0 gQUQL">
+                    <path
+                      d="M22.207 2.824a1 1 0 1 0-1.414-1.414L17.15 5.053C15.621 4.363 13.92 4 12 4 8.671 4 5.996 5.091 3.742 7.089c-.896.794-2.3 2.353-3.381 4.453L.125 12l.236.458c1.082 2.1 2.485 3.659 3.381 4.453.278.246.562.479.853.697L1.793 20.41a1 1 0 1 0 1.414 1.414l3.126-3.126.003.002 1.503-1.503-.004-.001 1.73-1.73.004.001 1.567-1.567h-.004l4.68-4.681.001.004 1.595-1.595-.002-.003.11-.109.002.002 1.444-1.444-.003-.002 3.248-3.248zM14.884 7.32l-5.57 5.57A4.035 4.035 0 0 1 8.113 10c0-2.23 1.761-4 3.886-4 1.137 0 2.17.506 2.884 1.319zM7.9 14.304l-1.873 1.873a11.319 11.319 0 0 1-.957-.763C4.396 14.818 3.3 13.621 2.387 12c.913-1.62 2.01-2.818 2.683-3.414.519-.46 1.061-.863 1.634-1.204A6.073 6.073 0 0 0 6.113 10c0 1.681.682 3.21 1.786 4.304zm11.568-5.2 1.415-1.415a16.503 16.503 0 0 1 2.756 3.853l.236.458-.236.458c-1.082 2.1-2.485 3.659-3.381 4.453C18.004 18.908 15.328 20 12 20a13.22 13.22 0 0 1-3.08-.348l1.726-1.726c.435.05.886.074 1.354.074 2.833 0 5.037-.907 6.931-2.586.674-.596 1.77-1.793 2.683-3.414a14.515 14.515 0 0 0-2.146-2.896z">
+                    </path>
+                    <path d="M17.843 10.729c-.328 2.755-2.494 4.956-5.24 5.24l5.24-5.24z"></path>
+                  </svg></span></button></div>
+          </div>
+        </div>
+        <div data-encore-id="formGroup" class="Group-sc-u9bcx5-0 bNNEyC">
+          <div class="LabelGroup-sc-1ibddrg-0 bSnCsh"><label for="displayname" class="Label-sc-1c0cv3r-0 ezvJUn"><span
+                class="LabelInner-sc-19pye2k-0 cCagTa">What should we call you?</span></label></div><input type="text"
+            aria-invalid="false" id="displayname" name="displayname" placeholder="Enter a profile name." required=""
+            value="" data-encore-id="formInput" class="Input-sc-1gbx9xe-0 eiAzGk">
+          <div class="Help-sc-1xezfve-0 evnzZY DisplayName__StyledFormHelpText-sc-5jzdo3-0 idJnkq"
+            data-encore-id="formHelpText"><span class="Text-sc-g5kv67-0 hfclbh">This appears on your profile.</span>
+          </div>
+        </div>
+        <div data-encore-id="formGroup" class="Group-sc-u9bcx5-0 bNNEyC">
+          <div class="LabelGroup-sc-1ibddrg-0 bSnCsh"><label class="Label-sc-1c0cv3r-0 ezvJUn"><span
+                class="LabelInner-sc-19pye2k-0 cCagTa">What's your date of birth?</span></label></div>
+          <div data-testid="dob-parent" class="Row-sc-1xvvf96-0 cFxIb">
+            <div data-testid="year" class="Year__YearWrapper-sc-1veq4uf-0 gloLvL">
+              <div class="Group-sc-u9bcx5-0 bNNEyC Year___StyledFormGroup-sc-1veq4uf-1 kCdKKA"
+                data-encore-id="formGroup">
+                <div class="LabelGroup-sc-1ibddrg-0 bSnCsh"><label for="year" class="Label-sc-1c0cv3r-0 ezvJUn"><span
+                      class="LabelInner-sc-19pye2k-0 cCagTa">Year</span></label></div><input type="text"
+                  aria-invalid="false" id="year" inputmode="numeric" maxlength="4" name="year"
+                  pattern="(19[0-9]{2})|(200)[0-9]|(201)[0-0]" placeholder="YYYY" required="" value=""
+                  data-encore-id="formInput" class="Input-sc-1gbx9xe-0 eiAzGk">
+              </div>
+            </div>
+            <div data-testid="month" class="Month__MonthWrapper-sc-1ghcdys-0 dpPoG">
+              <div class="Group-sc-u9bcx5-0 bNNEyC Month___StyledFormGroup-sc-1ghcdys-2 jwRJuX"
+                data-encore-id="formGroup">
+                <div class="LabelGroup-sc-1ibddrg-0 bSnCsh"><label for="month" class="Label-sc-1c0cv3r-0 ezvJUn"><span
+                      class="LabelInner-sc-19pye2k-0 cCagTa">Month</span></label></div>
+                <div data-encore-id="formSelect" class="SelectContainer-sc-wv4dj5-0 kNgXCU"><select id="month"
+                    name="month" required="" aria-invalid="false"
+                    class="Select-sc-3qvhho-0 gXzICK Month__StyledFormSelect-sc-1ghcdys-1 haLlND">
+                    <option selected="" disabled="" value="">Month</option>
+                    <option value="01">January</option>
+                    <option value="02">February</option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                  </select><svg role="img" height="16" width="16" aria-hidden="true"
+                    class="Svg-sc-ytk21e-0 gQUQL SelectArrow-sc-12qvh0d-0 RSVhW" viewBox="0 0 16 16"
+                    data-encore-id="icon">
+                    <path
+                      d="M.47 4.97a.75.75 0 0 1 1.06 0L8 11.44l6.47-6.47a.75.75 0 1 1 1.06 1.06L8 13.56.47 6.03a.75.75 0 0 1 0-1.06z">
+                    </path>
+                  </svg></div>
+              </div>
+            </div>
+            <div data-testid="day" class="Day__DayWrapper-sc-1h7mkij-0 gHMugR">
+              <div class="Group-sc-u9bcx5-0 bNNEyC Day___StyledFormGroup-sc-1h7mkij-1 jJpIgU"
+                data-encore-id="formGroup">
+                <div class="LabelGroup-sc-1ibddrg-0 bSnCsh"><label for="day" class="Label-sc-1c0cv3r-0 ezvJUn"><span
+                      class="LabelInner-sc-19pye2k-0 cCagTa">Day</span></label></div><input type="text"
+                  aria-invalid="false" id="day" inputmode="numeric" maxlength="2" name="day"
+                  pattern="((0?[1-9])|([12][0-9])|(3[01]))" placeholder="DD" required="" value=""
+                  data-encore-id="formInput" class="Input-sc-1gbx9xe-0 eiAzGk">
+              </div>
+            </div>
+          </div>
+          <div data-testid="dob-error-messages-parent"></div>
+        </div>
+        <fieldset role="radiogroup" data-encore-id="formGroup" class="Group-sc-u9bcx5-0 cjzwMh">
+          <legend class="LabelGroup-sc-1ibddrg-0 bwgTGW"><span>What's your gender?</span></legend>
+          <div class="InlineGroup-sc-4o5aq4-0 iNKEny">
+            <div data-encore-id="formRadio" class="Radio-sc-tr5kfi-0 hcKOBC"><input type="radio" id="gender_option_male"
+                name="gender" required="" value="male" aria-invalid="false" data-encore-id="visuallyHidden"
+                class="VisuallyHidden__VisuallyHiddenElement-sc-17bibe8-0 kdFSxQ"><label for="gender_option_male"
+                class="Label-sc-17gd8mo-0 fcdZfL"><span class="Indicator-sc-hjfusp-0 dFGMcY"></span><span
+                  class="Type__TypeElement-sc-goli3j-0 eIvwKg TextForLabel-sc-1wen0a8-0 dwmyHd"
+                  data-encore-id="type">Male</span></label></div>
+            <div data-encore-id="formRadio" class="Radio-sc-tr5kfi-0 hcKOBC"><input type="radio"
+                id="gender_option_female" name="gender" required="" value="female" aria-invalid="false"
+                data-encore-id="visuallyHidden" class="VisuallyHidden__VisuallyHiddenElement-sc-17bibe8-0 kdFSxQ"><label
+                for="gender_option_female" class="Label-sc-17gd8mo-0 fcdZfL"><span
+                  class="Indicator-sc-hjfusp-0 dFGMcY"></span><span
+                  class="Type__TypeElement-sc-goli3j-0 eIvwKg TextForLabel-sc-1wen0a8-0 dwmyHd"
+                  data-encore-id="type">Female</span></label></div>
+            <div data-encore-id="formRadio" class="Radio-sc-tr5kfi-0 hcKOBC"><input type="radio"
+                id="gender_option_nonbinary" name="gender" required="" value="neutral" aria-invalid="false"
+                data-encore-id="visuallyHidden" class="VisuallyHidden__VisuallyHiddenElement-sc-17bibe8-0 kdFSxQ"><label
+                for="gender_option_nonbinary" class="Label-sc-17gd8mo-0 fcdZfL"><span
+                  class="Indicator-sc-hjfusp-0 dFGMcY"></span><span
+                  class="Type__TypeElement-sc-goli3j-0 eIvwKg TextForLabel-sc-1wen0a8-0 dwmyHd"
+                  data-encore-id="type">Non-binary</span></label></div>
+            <div data-encore-id="formRadio" class="Radio-sc-tr5kfi-0 hcKOBC"><input type="radio"
+                id="gender_option_other" name="gender" required="" value="other" aria-invalid="false"
+                data-encore-id="visuallyHidden" class="VisuallyHidden__VisuallyHiddenElement-sc-17bibe8-0 kdFSxQ"><label
+                for="gender_option_other" class="Label-sc-17gd8mo-0 fcdZfL"><span
+                  class="Indicator-sc-hjfusp-0 dFGMcY"></span><span
+                  class="Type__TypeElement-sc-goli3j-0 eIvwKg TextForLabel-sc-1wen0a8-0 dwmyHd"
+                  data-encore-id="type">Other</span></label></div>
+            <div data-encore-id="formRadio" class="Radio-sc-tr5kfi-0 hcKOBC"><input type="radio"
+                id="gender_option_prefernottosay" name="gender" required="" value="prefer_not_to_say"
+                aria-invalid="false" data-encore-id="visuallyHidden"
+                class="VisuallyHidden__VisuallyHiddenElement-sc-17bibe8-0 kdFSxQ"><label
+                for="gender_option_prefernottosay" class="Label-sc-17gd8mo-0 fcdZfL"><span
+                  class="Indicator-sc-hjfusp-0 dFGMcY"></span><span
+                  class="Type__TypeElement-sc-goli3j-0 eIvwKg TextForLabel-sc-1wen0a8-0 dwmyHd"
+                  data-encore-id="type">Prefer not to say</span></label></div>
+          </div>
+        </fieldset>
+        <div data-encore-id="formGroup" class="Group-sc-u9bcx5-0 bNNEyC">
+          <div data-encore-id="formCheckbox" class="Checkbox-sc-svpvf6-0 cFtZyo"><input type="checkbox"
+              id="marketing-opt-checkbox" name="marketing" data-encore-id="visuallyHidden"
+              class="VisuallyHidden__VisuallyHiddenElement-sc-17bibe8-0 kdFSxQ"><label for="marketing-opt-checkbox"
+              class="Label-sc-cpoq-0 ffsXBF"><span class="Indicator-sc-1airx73-0 kKEdhj"></span><span
+                class="TextForLabel-sc-1jqya9m-0 bgYGHK">I would prefer not to receive marketing messages from
+                Spotify</span></label></div>
+        </div>
+        <div data-encore-id="formGroup" class="Group-sc-u9bcx5-0 bNNEyC">
+          <div data-encore-id="formCheckbox" class="Checkbox-sc-svpvf6-0 cFtZyo"><input type="checkbox"
+              id="third-party-checkbox" name="thirdParty" data-encore-id="visuallyHidden"
+              class="VisuallyHidden__VisuallyHiddenElement-sc-17bibe8-0 kdFSxQ"><label for="third-party-checkbox"
+              class="Label-sc-cpoq-0 ffsXBF"><span class="Indicator-sc-1airx73-0 kKEdhj"></span><span
+                class="TextForLabel-sc-1jqya9m-0 bgYGHK"><span class="LinkContainer-sc-1t58wcv-0 bcSvKz">Share my
+                  registration data with Spotify's content providers for marketing purposes.</span></span></label></div>
+        </div>
+        <div class="EmailForm__Center-jwtojv-0 bTvwxQ">
+          <p data-encore-id="type" class="Type__TypeElement-sc-goli3j-0 ecbZdr"><span
+              class="LinkContainer-sc-1t58wcv-0 bcSvKz">By clicking on sign-up, you agree to Spotify's <a
+                href="/in-en/legal/end-user-agreement/" target="_blank" rel="noopener noreferrer">Terms and Conditions
+                of Use</a>.</span></p>
+          <p data-encore-id="type" class="Type__TypeElement-sc-goli3j-0 ecbZdr"><span
+              class="LinkContainer-sc-1t58wcv-0 bcSvKz">To learn more about how Spotify collects, uses, shares and
+              protects your personal data, please see <a href="/in-en/legal/privacy-policy/" target="_blank"
+                rel="noopener noreferrer">Spotify's Privacy Policy</a>.</span></p>
+          <div class="SignupButton__ButtonContainerSignup-cjcq5h-0 jxMjKv"><button type="submit"
+              data-encore-id="buttonPrimary" class="Button-sc-qlcn5g-0 kHvryD"><span
+                class="ButtonInner-sc-14ud5tc-0 dqLIWu encore-bright-accent-set SignupButton___StyledButtonPrimary-cjcq5h-1 jazsmO">Sign
+                up</span><span class="ButtonFocus-sc-2hq6ey-0 hWVa-Du"></span></button></div>
+          <p data-encore-id="type" class="Type__TypeElement-sc-goli3j-0 bYQtYg"><span
+              class="LinkContainer-sc-1t58wcv-0 bcSvKz">Have an account? <a
+                href="https://accounts.spotify.com?continue=https%3A%2F%2Fopen.spotify.com%2F%3Fflow_id%3Db325c2ca-d221-4300-8824-1b27fffff6f6%253A1685460393%26creation_point%3Dhttps%3A%2F%2Fwww.spotify.com%2Fapi%2Fmasthead%2Fv1%2Fmasthead&amp;flow_id=b325c2ca-d221-4300-8824-1b27fffff6f6%3A1685460393">Log
+                in</a>.</span></p>
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+  <div>
+
+  </div>
+</body>
+
+</html>
