@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from .models import SpotifyAPI
 from django.shortcuts import redirect
 from .models import get_spotify_auth, SpotifyAPI, get_user_profile
+from .utils import update_or_create_user_tokens
 import requests
 
 
@@ -124,11 +125,15 @@ def spotify_callback(request):
         'client_secret': client_secret,
     }
     
+
     response = requests.post(token_url, data=payload)
     response_data = response.json()
     
     access_token = response_data.get('access_token')
-    print('at is:-',access_token)
+    token_type = response_data.get('token_type')
+    refresh_token = response_data.get('refresh_token')
+    expires_in = response_data.get('expires_in')
+
     
     # Use the access token to fetch the user profile
     profile_url = 'https://api.spotify.com/v1/me'
@@ -141,6 +146,9 @@ def spotify_callback(request):
     
     # Print user details
     print("User details:", profile_data)
+
+    update_or_create_user_tokens(
+        request.session.session_key, access_token, token_type, expires_in, refresh_token)
     
     # Process the retrieved user profile data as needed
     # ...

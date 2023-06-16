@@ -7,11 +7,21 @@ from spotipy.oauth2 import SpotifyOAuth
 from django.conf import settings
 import requests
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
+from django.utils import timezone
+
 
 # Create your models here.
+class SpotifyToken(models.Model):
+    user = models.CharField(max_length=50, unique=True, default=None)
+    created_at = models.DateTimeField(default=timezone.now)
+    refresh_token = models.CharField(max_length=250)
+    access_token = models.CharField(max_length=250)
+    expires_in = models.DateTimeField()
+    token_type = models.CharField(max_length=50)
+
 
 class SpotifyAPI(object):
-    access_token = None
+    access_token = 'access token'
     access_token_expires = datetime.datetime.now()
     access_token_did_expire = True
     client_id = None
